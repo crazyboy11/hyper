@@ -241,51 +241,51 @@ function msg_processor(msg)
 
   if msg.text then return end
 
-  elseif msg.text:match("^/bold (.*)") then
-	local matches = { string.match(msg.text, "^/bold (.*)") }
+  elseif msg.text:match("^پر رنگ (.*)") then
+	local matches = { string.match(msg.text, "^پر رنگ (.*)") }
 	local text = '*'..matches[1]..'*'
   sendMessage(msg.chat.id, text, true, false, true)
 
-  elseif msg.text:match("^/boldch (.*) (.*)") then
-	local matches = { string.match(msg.text, "^/boldch (.*) (.*)") }
+  elseif msg.text:match("^پر رنگ  (.*) (.*)") then
+	local matches = { string.match(msg.text, "^پر رنگ (.*) (.*)") }
 	local text = '*'..matches[2]..'*'
 	local channel = matches[1]
 	sendMessage(channel, text, true, false, true)
 
-  elseif msg.text:match("^/italic (.*)") then
-	local matches = { string.match(msg.text, "^/italic (.*)") }
+  elseif msg.text:match("^کج (.*)") then
+	local matches = { string.match(msg.text, "^کج (.*)") }
 	local text = '_'..matches[1]..'_'
 	sendMessage(msg.chat.id, text, true, false, true)
 
- elseif msg.text:match("^/italicch (.*) (.*)") then
-	local matches = { string.match(msg.text, "^/italicch (.*) (.*)") }
+ elseif msg.text:match("^کج (.*) (.*)") then
+	local matches = { string.match(msg.text, "^کج (.*) (.*)") }
 	local text = '_'..matches[2]..'_'
 	local channel = matches[1]
 	sendMessage(channel, text, true, false, true)
 
- elseif msg.text:match("^/link (.*) (.*)") then
- local matches = { string.match(msg.text, "^/link (.*) (.*)") }
+ elseif msg.text:match("^لینک (.*) (.*)") then
+ local matches = { string.match(msg.text, "^لینک (.*) (.*)") }
  local text = '['..matches[2]..']('..matches[1]..')'
  sendMessage(msg.chat.id, text, true, false, true)
 
-elseif msg.text:match("^/linkch (.*) (.*) (.*)") then
- local matches = { string.match(msg.text, "^/linkch (.*) (.*) (.*)") }
+elseif msg.text:match("^لینک (.*) (.*) (.*)") then
+ local matches = { string.match(msg.text, "^لینک (.*) (.*) (.*)") }
  local text = '['..matches[3]..']('..matches[2]..')'
  local channel = matches[1]
  sendMessage(channel, text, true, false, true)
 
- elseif msg.text:match("^/code (.*)") then
- local matches = { string.match(msg.text, "^/code (.*)") }
+ elseif msg.text:match("^کد (.*)") then
+ local matches = { string.match(msg.text, "^کد (.*)") }
  local text = '`'..matches[1]..'`'
  sendMessage(msg.chat.id, text, true, false, true)
 
- elseif msg.text:match("^/codech (.*) (.*)") then
- local matches = { string.match(msg.text, "^/codech (.*) (.*)") }
+ elseif msg.text:match("^کد (.*) (.*)") then
+ local matches = { string.match(msg.text, "^کد (.*) (.*)") }
  local text = '`'..matches[2]..'`'
  local channel = matches[1]
  sendMessage(channel, text, true, false, true)
 
-elseif msg.text:match("^/[sS]tart") or msg.text:match("^/[Hh]elp") then
+elseif msg.text:match("^/[sS]tart") or msg.text:match("^راهنما") then
  sendMessage(msg.chat.id, start, true, false, true)
 
 return end
