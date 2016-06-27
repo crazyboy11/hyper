@@ -5,44 +5,24 @@ URL = require('socket.url')
 JSON = require('dkjson')
 HTTPS = require('ssl.https')
 ----config----
-local bot_api_key = "233072224:AAFus_WXBgeaEJ4NrePBpy0WXjBpmg6ZHhs"
+local bot_api_key = "201420684:AAHC3hQ7OJQX5brnQiEe5m-QEVnjygy70nw"
 local BASE_URL = "https://api.telegram.org/bot"..bot_api_key
 local BASE_FOLDER = ""
-local start = [[😉 سلام 😉
-==========================
-/bold text
-📜 برای پر رنگ کردن متن 📜
-/italic text
-📜 کج کردن متن 📜
-
-/link url text
-ساخت متن لینک دار 📜
-
-/code text
-📜 برای رنگی کردن متن (در نسخه کامپیوتر) 📜
-
-
-*-channel*
-📜برای ادد کردن کانال خود در ربات دستور بالا را وارد کنید 📜
-
-/boldch  (متن مورد نظر) (ایدی کانال شما)
-📜 ارسال متن پر رنگ به کانال شما 📜
-
-/italicch  (متن مورد نظر) (ایدی کانال شما)
-📜 ارسال متن کج به کانال شما 📜
-
-/linkch (متن مورد نظر) (ایدی کانال شما)
-📜 ارسال متن لینک دار به کانال شما 📜
-
-/codech (متن مورد نظر) (ایدی کانال شما)
-📜 ارسال متن رنگی به کانال شما 📜
-
-😊 تبدیل استیکر به عکس 😊
-❤️کافیه استیکر رو بفرستی تا تبدیلش کنم ❤️
-😊 تبدیل عکس به استیکر 😊
-❤️کافیه عکس رو بفرستی تا تبدیلش کنم ❤️
-==========================
-ایدی ادمین ربات : @Delaram_Queen_TM
+local start = [[
+🤖 لیست دستورات ربات هایپر 🤖
+🔶 بولد (متن) 🔶
+دریافت یک متن بولد
+🔷 کج (متن) 🔷
+دریافت متن _کج_
+🔶 لینک (متن) (آدرس) 🔶
+دریافت متن به صورت لینک
+🔷 کد (متن) 🔷
+دریافت متن به صورت کامپیوتری
+🔶 تبدیل استیکر به عکس 🔶
+_فقط یک استیکر ارسال کنید_
+🔷 تبدیل عکس به استیکر 🔷
+_فقط یک استیکر ارسال کنید_
+👤 ادمین ربات : @Delaram_Queen_TM 👤
 ]] 
 
 -------
@@ -201,7 +181,7 @@ function bot_run()
 
 	bot = bot.result
 
-	local bot_info = "ایدی شما = @"..bot.username.."\nنام شما = "..bot.first_name.."\nایدی عددی شما = "..bot.id
+	local bot_info = "Username = @"..bot.username.."\nName = "..bot.first_name.."\nId = "..bot.id.." \nbased on linux-file-manager :D\nthx to @mohammadarak"
 
 	print(bot_info)
 
@@ -241,13 +221,13 @@ function msg_processor(msg)
 
   if msg.text then return end
 
-  elseif msg.text:match("^پر رنگ (.*)") then
-	local matches = { string.match(msg.text, "^پر رنگ (.*)") }
+  elseif msg.text:match("^بولد (.*)") then
+	local matches = { string.match(msg.text, "^بولد (.*)") }
 	local text = '*'..matches[1]..'*'
   sendMessage(msg.chat.id, text, true, false, true)
 
-  elseif msg.text:match("^پر رنگ  (.*) (.*)") then
-	local matches = { string.match(msg.text, "^پر رنگ (.*) (.*)") }
+  elseif msg.text:match("^/boldch (.*) (.*)") then
+	local matches = { string.match(msg.text, "^/boldch (.*) (.*)") }
 	local text = '*'..matches[2]..'*'
 	local channel = matches[1]
 	sendMessage(channel, text, true, false, true)
@@ -257,8 +237,8 @@ function msg_processor(msg)
 	local text = '_'..matches[1]..'_'
 	sendMessage(msg.chat.id, text, true, false, true)
 
- elseif msg.text:match("^کج (.*) (.*)") then
-	local matches = { string.match(msg.text, "^کج (.*) (.*)") }
+ elseif msg.text:match("^/italicch (.*) (.*)") then
+	local matches = { string.match(msg.text, "^/italicch (.*) (.*)") }
 	local text = '_'..matches[2]..'_'
 	local channel = matches[1]
 	sendMessage(channel, text, true, false, true)
@@ -268,8 +248,8 @@ function msg_processor(msg)
  local text = '['..matches[2]..']('..matches[1]..')'
  sendMessage(msg.chat.id, text, true, false, true)
 
-elseif msg.text:match("^لینک (.*) (.*) (.*)") then
- local matches = { string.match(msg.text, "^لینک (.*) (.*) (.*)") }
+elseif msg.text:match("^/linkch (.*) (.*) (.*)") then
+ local matches = { string.match(msg.text, "^/linkch (.*) (.*) (.*)") }
  local text = '['..matches[3]..']('..matches[2]..')'
  local channel = matches[1]
  sendMessage(channel, text, true, false, true)
@@ -279,13 +259,13 @@ elseif msg.text:match("^لینک (.*) (.*) (.*)") then
  local text = '`'..matches[1]..'`'
  sendMessage(msg.chat.id, text, true, false, true)
 
- elseif msg.text:match("^کد (.*) (.*)") then
- local matches = { string.match(msg.text, "^کد (.*) (.*)") }
+ elseif msg.text:match("^/codech (.*) (.*)") then
+ local matches = { string.match(msg.text, "^/codech (.*) (.*)") }
  local text = '`'..matches[2]..'`'
  local channel = matches[1]
  sendMessage(channel, text, true, false, true)
 
-elseif msg.text:match("^/[sS]tart") or msg.text:match("^راهنما") then
+elseif msg.text:match("^/[sS]tart") or msg.text:match("^/[Hh]elp") then
  sendMessage(msg.chat.id, start, true, false, true)
 
 return end
